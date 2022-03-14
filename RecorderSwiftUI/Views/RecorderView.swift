@@ -7,10 +7,37 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct RecorderView: View {
+    @StateObject private var viewModel = RecorderViewModel()
     @State private var sliderValue = 5.0
-    
+
     init() {
+        setupNavigationBar()
+    }
+    
+    var body: some View {
+        NavigationView {
+            VStack {
+                List(viewModel.records, id: \.self) { record in
+                    RecordCellView(sliderValue: $sliderValue)
+                        .buttonStyle(PlainButtonStyle())
+                }
+                .navigationTitle("Диктофон")
+                .listStyle(.plain)
+                Button {
+                    withAnimation(.default) {
+                        viewModel.recordButtonAction()
+                    }
+                } label: {
+                    Text("Запись")
+                }
+            }
+        }
+    }
+}
+
+extension RecorderView {
+    private func setupNavigationBar() {
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
         navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
@@ -19,23 +46,12 @@ struct ContentView: View {
         UINavigationBar.appearance().compactAppearance = navBarAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
         UINavigationBar.appearance().tintColor = UIColor.white
-
-    }
-    
-    var body: some View {
-        NavigationView {
-            List {
-                RecordCellView(sliderValue: $sliderValue)
-                RecordCellView(sliderValue: $sliderValue)
-            }
-            .navigationTitle("Диктофон")
-            .listStyle(.plain)
-        }
     }
 }
 
+    
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        RecorderView()
     }
 }

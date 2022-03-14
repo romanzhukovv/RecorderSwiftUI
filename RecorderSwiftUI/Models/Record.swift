@@ -7,6 +7,9 @@
 
 import Foundation
 
-struct Record {
-    
+struct Record: Hashable {
+    let name: String
+    let date = Date()
+    let duration: Int
+    let isLike = false
 }

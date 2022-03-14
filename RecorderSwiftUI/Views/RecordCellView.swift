@@ -9,12 +9,15 @@ import SwiftUI
 
 struct RecordCellView: View {
     @Binding var sliderValue: Double
+    @StateObject private var viewModel = RecorderViewModel()
     
     var body: some View {
         VStack {
             HStack {
                 Text("Новая запись")
                 Spacer()
+                Image("Heart2")
+                    .padding(.trailing, 30)
                 Text("00:15")
             }
             Text("10 окт. 2021")
@@ -32,7 +35,7 @@ struct RecordCellView: View {
                 Button(action: {}) {
                     Image("RewindButton")
                 }
-                Button(action: {}) {
+                Button(action: {viewModel.playRecord()}) {
                     Image("PlayButton")
                 }
                 Button(action: {}) {

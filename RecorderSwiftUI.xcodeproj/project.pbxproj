@@ -12,19 +12,20 @@
 		FC9E68C527DE8AC600489FCF /* RecorderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9E68C427DE8AC600489FCF /* RecorderViewModel.swift */; };
 		FC9E68C727DE906C00489FCF /* RecordCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9E68C627DE906C00489FCF /* RecordCellView.swift */; };
 		FCCA3A1D27DBE328002A9B80 /* RecorderSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA3A1C27DBE328002A9B80 /* RecorderSwiftUIApp.swift */; };
-		FCCA3A1F27DBE328002A9B80 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA3A1E27DBE328002A9B80 /* ContentView.swift */; };
+		FCCA3A1F27DBE328002A9B80 /* RecorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA3A1E27DBE328002A9B80 /* RecorderView.swift */; };
 		FCCA3A2127DBE329002A9B80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCCA3A2027DBE329002A9B80 /* Assets.xcassets */; };
 		FCCA3A2427DBE329002A9B80 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCCA3A2327DBE329002A9B80 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FC79473727DF8475001C8171 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FC9E68C027DE8A2000489FCF /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		FC9E68C227DE8AB100489FCF /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		FC9E68C427DE8AC600489FCF /* RecorderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderViewModel.swift; sourceTree = "<group>"; };
 		FC9E68C627DE906C00489FCF /* RecordCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCellView.swift; sourceTree = "<group>"; };
 		FCCA3A1927DBE328002A9B80 /* RecorderSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecorderSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCCA3A1C27DBE328002A9B80 /* RecorderSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderSwiftUIApp.swift; sourceTree = "<group>"; };
-		FCCA3A1E27DBE328002A9B80 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		FCCA3A1E27DBE328002A9B80 /* RecorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderView.swift; sourceTree = "<group>"; };
 		FCCA3A2027DBE329002A9B80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FCCA3A2327DBE329002A9B80 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -51,7 +52,7 @@
 		FC9E68BB27DE892000489FCF /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				FCCA3A1E27DBE328002A9B80 /* ContentView.swift */,
+				FCCA3A1E27DBE328002A9B80 /* RecorderView.swift */,
 				FC9E68C627DE906C00489FCF /* RecordCellView.swift */,
 				FCCA3A1C27DBE328002A9B80 /* RecorderSwiftUIApp.swift */,
 			);
@@ -101,6 +102,7 @@
 		FCCA3A1B27DBE328002A9B80 /* RecorderSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				FC79473727DF8475001C8171 /* Info.plist */,
 				FC9E68BF27DE8A0700489FCF /* Services */,
 				FC9E68BD27DE894500489FCF /* Models */,
 				FC9E68BC27DE892900489FCF /* ViewModels */,
@@ -190,7 +192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC9E68C127DE8A2000489FCF /* StorageManager.swift in Sources */,
-				FCCA3A1F27DBE328002A9B80 /* ContentView.swift in Sources */,
+				FCCA3A1F27DBE328002A9B80 /* RecorderView.swift in Sources */,
 				FC9E68C527DE8AC600489FCF /* RecorderViewModel.swift in Sources */,
 				FC9E68C327DE8AB100489FCF /* Record.swift in Sources */,
 				FCCA3A1D27DBE328002A9B80 /* RecorderSwiftUIApp.swift in Sources */,
@@ -328,9 +330,12 @@
 				DEVELOPMENT_TEAM = 4ARG8W2BQX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RecorderSwiftUI/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -342,7 +347,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -357,9 +362,12 @@
 				DEVELOPMENT_TEAM = 4ARG8W2BQX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RecorderSwiftUI/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -371,7 +379,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
