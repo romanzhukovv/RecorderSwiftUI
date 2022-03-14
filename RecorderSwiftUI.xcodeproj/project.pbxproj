@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC9E68C127DE8A2000489FCF /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9E68C027DE8A2000489FCF /* StorageManager.swift */; };
+		FC9E68C327DE8AB100489FCF /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9E68C227DE8AB100489FCF /* Record.swift */; };
+		FC9E68C527DE8AC600489FCF /* RecorderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9E68C427DE8AC600489FCF /* RecorderViewModel.swift */; };
+		FC9E68C727DE906C00489FCF /* RecordCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9E68C627DE906C00489FCF /* RecordCellView.swift */; };
 		FCCA3A1D27DBE328002A9B80 /* RecorderSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA3A1C27DBE328002A9B80 /* RecorderSwiftUIApp.swift */; };
 		FCCA3A1F27DBE328002A9B80 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA3A1E27DBE328002A9B80 /* ContentView.swift */; };
 		FCCA3A2127DBE329002A9B80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCCA3A2027DBE329002A9B80 /* Assets.xcassets */; };
@@ -14,6 +18,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FC9E68C027DE8A2000489FCF /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		FC9E68C227DE8AB100489FCF /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
+		FC9E68C427DE8AC600489FCF /* RecorderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderViewModel.swift; sourceTree = "<group>"; };
+		FC9E68C627DE906C00489FCF /* RecordCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCellView.swift; sourceTree = "<group>"; };
 		FCCA3A1927DBE328002A9B80 /* RecorderSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecorderSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCCA3A1C27DBE328002A9B80 /* RecorderSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderSwiftUIApp.swift; sourceTree = "<group>"; };
 		FCCA3A1E27DBE328002A9B80 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -32,6 +40,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FC9E68BA27DE88EF00489FCF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FCCA3A2027DBE329002A9B80 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		FC9E68BB27DE892000489FCF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FCCA3A1E27DBE328002A9B80 /* ContentView.swift */,
+				FC9E68C627DE906C00489FCF /* RecordCellView.swift */,
+				FCCA3A1C27DBE328002A9B80 /* RecorderSwiftUIApp.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FC9E68BC27DE892900489FCF /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				FC9E68C427DE8AC600489FCF /* RecorderViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		FC9E68BD27DE894500489FCF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FC9E68C227DE8AB100489FCF /* Record.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FC9E68BF27DE8A0700489FCF /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				FC9E68C027DE8A2000489FCF /* StorageManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		FCCA3A1027DBE328002A9B80 = {
 			isa = PBXGroup;
 			children = (
@@ -51,9 +101,11 @@
 		FCCA3A1B27DBE328002A9B80 /* RecorderSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
-				FCCA3A1C27DBE328002A9B80 /* RecorderSwiftUIApp.swift */,
-				FCCA3A1E27DBE328002A9B80 /* ContentView.swift */,
-				FCCA3A2027DBE329002A9B80 /* Assets.xcassets */,
+				FC9E68BF27DE8A0700489FCF /* Services */,
+				FC9E68BD27DE894500489FCF /* Models */,
+				FC9E68BC27DE892900489FCF /* ViewModels */,
+				FC9E68BB27DE892000489FCF /* Views */,
+				FC9E68BA27DE88EF00489FCF /* Resources */,
 				FCCA3A2227DBE329002A9B80 /* Preview Content */,
 			);
 			path = RecorderSwiftUI;
@@ -137,8 +189,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC9E68C127DE8A2000489FCF /* StorageManager.swift in Sources */,
 				FCCA3A1F27DBE328002A9B80 /* ContentView.swift in Sources */,
+				FC9E68C527DE8AC600489FCF /* RecorderViewModel.swift in Sources */,
+				FC9E68C327DE8AB100489FCF /* Record.swift in Sources */,
 				FCCA3A1D27DBE328002A9B80 /* RecorderSwiftUIApp.swift in Sources */,
+				FC9E68C727DE906C00489FCF /* RecordCellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
