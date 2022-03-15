@@ -7,9 +7,10 @@
 
 import Foundation
 
-struct Record: Hashable {
+struct Record: Hashable, Codable {
     let name: String
-    let date = Date()
-    let duration: Int
-    let isLike = false
+    let date: String
+    let duration: Double
+    var isLike = false
+    let path: URL
 }

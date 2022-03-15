@@ -8,21 +8,23 @@
 import SwiftUI
 
 struct RecordCellView: View {
-    @Binding var sliderValue: Double
-    @StateObject private var viewModel = RecorderViewModel()
+//    @Binding var sliderValue: Double
+    @StateObject private var viewModel = RecordCellViewModel()
     
+    var record: Record
+
     var body: some View {
         VStack {
             HStack {
-                Text("Новая запись")
+                Text("\(record.name)")
                 Spacer()
                 Image("Heart2")
                     .padding(.trailing, 30)
-                Text("00:15")
+                Text("\(record.duration)")
             }
-            Text("10 окт. 2021")
+            Text("\(record.date)")
                 .frame(maxWidth: .infinity, alignment: .leading)
-            Slider(value: $sliderValue, in: 0...10)
+            Slider(value: .constant(5), in: 0...10)
             HStack {
                 Text("00:02")
                 Spacer()
@@ -35,7 +37,7 @@ struct RecordCellView: View {
                 Button(action: {}) {
                     Image("RewindButton")
                 }
-                Button(action: {viewModel.playRecord()}) {
+                Button(action: {viewModel.playRecord(path: record.path)}) {
                     Image("PlayButton")
                 }
                 Button(action: {}) {
@@ -49,8 +51,8 @@ struct RecordCellView: View {
     }
 }
 
-struct RecordCellView_Previews: PreviewProvider {
-    static var previews: some View {
-        RecordCellView(sliderValue: .constant(5))
-    }
-}
+//struct RecordCellView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RecordCellView(record: Record(name: "", duration: 0))
+//    }
+//}

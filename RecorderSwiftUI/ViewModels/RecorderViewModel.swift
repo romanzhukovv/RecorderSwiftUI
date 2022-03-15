@@ -10,36 +10,49 @@ import AVFoundation
 
 class RecorderViewModel: NSObject, ObservableObject {
     @Published var records: [Record] = []
-    private var numberOfRecords = 0
+    @Published var isRecord = false
     
     private var audioRecorder: AVAudioRecorder!
-    private var audio: AVAudioPlayer!
     
     override init() {
         super.init()
-        
         requestRecordPermission()
         
-        if let number = UserDefaults.standard.object(forKey: "myNumber") as? Int {
-            numberOfRecords = number
+        if let data = UserDefaults.standard.object(forKey: "myNumber") as? Data {
+            guard let records = try? PropertyListDecoder().decode([Record].self, from: data) else { return }
+            self.records = records
         }
+        
+        print(records.count)
     }
     
     func recordButtonAction() {
         if audioRecorder == nil {
             startRecord()
+            isRecord.toggle()
         } else {
             stopRecord()
-            records.insert(Record(name: "Новая запись_\(numberOfRecords)", duration: 0), at: 0)
+            isRecord.toggle()
+            let path = getDirectory().appendingPathComponent("NewRecord_\(records.count).m4a")
+            do {
+                let audio = try AVAudioPlayer(contentsOf: path)
+                records.insert(Record(name: "NewRecord_\(records.count)",
+                                      date: Date().formatted(date: .abbreviated, time: .shortened),
+                                      duration: audio.duration,
+                                      path: path), at: 0)
+            } catch {
+                print("Error")
+            }
+            
+            
+            UserDefaults.standard.set(try? PropertyListEncoder().encode(records), forKey: "myNumber")
         }
     }
 }
 
 extension RecorderViewModel: AVAudioRecorderDelegate {
     private func startRecord() {
-        numberOfRecords += 1
-        let fileName = getDirectory().appendingPathComponent("\(numberOfRecords).m4a")
-        print(fileName)
+        let fileName = getDirectory().appendingPathComponent("NewRecord_\(records.count).m4a")
         let settings = [AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
                         AVSampleRateKey: 1200,
                         AVNumberOfChannelsKey: 1,
@@ -52,8 +65,6 @@ extension RecorderViewModel: AVAudioRecorderDelegate {
             audioRecorder.delegate = self
             audioRecorder.record()
             print("record")
-            let dateOfRecord = Date().formatted(date: .abbreviated, time: .shortened)
-            UserDefaults.standard.set(dateOfRecord, forKey: "\(numberOfRecords)")
         } catch {
             print("Failed recording")
         }
@@ -69,7 +80,6 @@ extension RecorderViewModel: AVAudioRecorderDelegate {
             print("ERROR: CANNOT PLAY MUSIC IN BACKGROUND. Message from code: \(error)")
         }
         audioRecorder = nil
-        UserDefaults.standard.set(numberOfRecords, forKey: "myNumber")
     }
     
     private func requestRecordPermission() {
@@ -91,16 +101,5 @@ extension RecorderViewModel: AVAudioRecorderDelegate {
         let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let documentDirectory = path[0]
         return documentDirectory
-    }
-    
-    func playRecord() {
-        let path = getDirectory().appendingPathComponent("1.m4a")
-        do {
-            audio = try AVAudioPlayer(contentsOf: path)
-            audio.play()
-            print("play")
-        } catch {
-            print("Error")
-        }
     }
 }

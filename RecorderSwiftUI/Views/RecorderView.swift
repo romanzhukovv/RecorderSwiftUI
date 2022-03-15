@@ -9,7 +9,6 @@ import SwiftUI
 
 struct RecorderView: View {
     @StateObject private var viewModel = RecorderViewModel()
-    @State private var sliderValue = 5.0
 
     init() {
         setupNavigationBar()
@@ -19,7 +18,7 @@ struct RecorderView: View {
         NavigationView {
             VStack {
                 List(viewModel.records, id: \.self) { record in
-                    RecordCellView(sliderValue: $sliderValue)
+                    RecordCellView(record: record)
                         .buttonStyle(PlainButtonStyle())
                 }
                 .navigationTitle("Диктофон")
@@ -29,7 +28,7 @@ struct RecorderView: View {
                         viewModel.recordButtonAction()
                     }
                 } label: {
-                    Text("Запись")
+                    Text(viewModel.isRecord ? "Стоп" : "Запись")
                 }
             }
         }
