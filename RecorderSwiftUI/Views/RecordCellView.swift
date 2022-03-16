@@ -9,20 +9,18 @@ import SwiftUI
 
 struct RecordCellView: View {
 //    @Binding var sliderValue: Double
-    @StateObject private var viewModel = RecordCellViewModel()
+    @ObservedObject var viewModel: RecordCellViewModel
     
-    var record: Record
-
     var body: some View {
         VStack {
             HStack {
-                Text("\(record.name)")
+                Text("\(viewModel.record.name)")
                 Spacer()
                 Image("Heart2")
                     .padding(.trailing, 30)
-                Text("\(record.duration)")
+                Text("\(viewModel.record.duration)")
             }
-            Text("\(record.date)")
+            Text("\(viewModel.record.date)")
                 .frame(maxWidth: .infinity, alignment: .leading)
             Slider(value: .constant(5), in: 0...10)
             HStack {
@@ -37,7 +35,7 @@ struct RecordCellView: View {
                 Button(action: {}) {
                     Image("RewindButton")
                 }
-                Button(action: {viewModel.playRecord(path: record.path)}) {
+                Button(action: {viewModel.playRecord()}) {
                     Image("PlayButton")
                 }
                 Button(action: {}) {

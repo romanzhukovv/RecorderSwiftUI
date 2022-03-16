@@ -9,9 +9,9 @@ import Foundation
 import AVFoundation
 
 class RecorderViewModel: NSObject, ObservableObject {
-    @Published var records: [Record] = []
+    @Published var records: [RecordCellViewModel] = []
     @Published var isRecord = false
-    
+    private var cache: [Record] = []
     private var audioRecorder: AVAudioRecorder!
     
     override init() {
@@ -20,7 +20,9 @@ class RecorderViewModel: NSObject, ObservableObject {
         
         if let data = UserDefaults.standard.object(forKey: "myNumber") as? Data {
             guard let records = try? PropertyListDecoder().decode([Record].self, from: data) else { return }
-            self.records = records
+            for record in records {
+                self.records.insert(RecordCellViewModel(record: record), at: 0)
+            }
         }
         
         print(records.count)
@@ -34,18 +36,21 @@ class RecorderViewModel: NSObject, ObservableObject {
             stopRecord()
             isRecord.toggle()
             let path = getDirectory().appendingPathComponent("NewRecord_\(records.count).m4a")
+            print(path)
             do {
                 let audio = try AVAudioPlayer(contentsOf: path)
-                records.insert(Record(name: "NewRecord_\(records.count)",
-                                      date: Date().formatted(date: .abbreviated, time: .shortened),
-                                      duration: audio.duration,
-                                      path: path), at: 0)
+                records.insert(RecordCellViewModel(record: Record(name: "NewRecord_\(records.count)",
+                                                                  date: Date().formatted(date: .abbreviated, time: .shortened),
+                                                                  duration: audio.duration,
+                                                                  path: path)), at: 0)
             } catch {
                 print("Error")
             }
             
-            
-            UserDefaults.standard.set(try? PropertyListEncoder().encode(records), forKey: "myNumber")
+            for record in records {
+                cache.insert(record.record, at: 0)
+            }
+            UserDefaults.standard.set(try? PropertyListEncoder().encode(cache), forKey: "myNumber")
         }
     }
 }

@@ -18,7 +18,7 @@ struct RecorderView: View {
         NavigationView {
             VStack {
                 List(viewModel.records, id: \.self) { record in
-                    RecordCellView(record: record)
+                    RecordCellView(viewModel: record)
                         .buttonStyle(PlainButtonStyle())
                 }
                 .navigationTitle("Диктофон")
@@ -32,6 +32,7 @@ struct RecorderView: View {
                 }
             }
         }
+        .navigationViewStyle(.stack)
     }
 }
 

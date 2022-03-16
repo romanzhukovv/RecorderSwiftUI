@@ -9,15 +9,22 @@ import Foundation
 import AVFoundation
 
 class RecordCellViewModel: NSObject, ObservableObject {
+    var record: Record
     private var audioPlayer: AVAudioPlayer!
     
-    func playRecord(path: URL) {
+    init(record: Record) {
+        self.record = record
+    }
+    
+    func playRecord() {
+        print(record.path)
         do {
-            audioPlayer = try AVAudioPlayer(contentsOf: path)
+            audioPlayer = try AVAudioPlayer(contentsOf: record.path)
+            audioPlayer.prepareToPlay()
             audioPlayer.play()
             print("play")
         } catch {
-            print("Error")
+            print(error.localizedDescription)
         }
     }
 }
