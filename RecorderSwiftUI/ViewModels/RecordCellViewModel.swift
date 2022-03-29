@@ -9,8 +9,8 @@ import Foundation
 import AVFoundation
 
 class RecordCellViewModel: NSObject, ObservableObject {
-    var record: Record
-    private var audioPlayer: AVAudioPlayer!
+    @Published var record: Record
+    private var audioPlayer: AVAudioPlayer?
     
     init(record: Record) {
         self.record = record
@@ -20,11 +20,15 @@ class RecordCellViewModel: NSObject, ObservableObject {
         print(record.path)
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: record.path)
-            audioPlayer.prepareToPlay()
-            audioPlayer.play()
+            audioPlayer?.prepareToPlay()
+            audioPlayer?.play()
             print("play")
         } catch {
             print(error.localizedDescription)
         }
+    }
+    
+    func likePressed() {
+        record.isLike.toggle()
     }
 }

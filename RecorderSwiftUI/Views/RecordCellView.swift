@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RecordCellView: View {
 //    @Binding var sliderValue: Double
+//    @State private var likeIsHidden = true
     @ObservedObject var viewModel: RecordCellViewModel
     
     var body: some View {
@@ -18,6 +19,7 @@ struct RecordCellView: View {
                 Spacer()
                 Image("Heart2")
                     .padding(.trailing, 30)
+                    .opacity(viewModel.record.isLike ? 1 : 0)
                 Text("\(viewModel.record.duration)")
             }
             Text("\(viewModel.record.date)")
@@ -29,13 +31,13 @@ struct RecordCellView: View {
                 Text("-00:13")
             }
             HStack(spacing: 40) {
-                Button(action: {}) {
+                Button(action: { viewModel.likePressed() }) {
                     Image("Heart")
                 }
                 Button(action: {}) {
                     Image("RewindButton")
                 }
-                Button(action: {viewModel.playRecord()}) {
+                Button(action: { viewModel.playRecord() }) {
                     Image("PlayButton")
                 }
                 Button(action: {}) {
@@ -51,6 +53,6 @@ struct RecordCellView: View {
 
 //struct RecordCellView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        RecordCellView(record: Record(name: "", duration: 0))
+//        RecordCellView(viewModel: RecordCellViewModel(record: Record(name: "", date: "", duration: 0, isLike: true, path: URL(string: "")!)))
 //    }
 //}

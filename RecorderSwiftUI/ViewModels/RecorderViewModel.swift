@@ -8,14 +8,12 @@
 import Foundation
 import AVFoundation
 
-class RecorderViewModel: NSObject, ObservableObject {
+class RecorderViewModel: ObservableObject {
     @Published var records: [RecordCellViewModel] = []
     @Published var isRecord = false
-    private var cache: [Record] = []
-    private var audioRecorder: AVAudioRecorder!
+    private var audioRecorder: AVAudioRecorder?
     
-    override init() {
-        super.init()
+    init() {
         requestRecordPermission()
         
         if let data = UserDefaults.standard.object(forKey: "myNumber") as? Data {
@@ -47,28 +45,26 @@ class RecorderViewModel: NSObject, ObservableObject {
                 print("Error")
             }
             
-            for record in records {
-                cache.insert(record.record, at: 0)
-            }
-            UserDefaults.standard.set(try? PropertyListEncoder().encode(cache), forKey: "myNumber")
+            let recordsCache = Array(records.map { $0.record }.reversed())
+            
+            UserDefaults.standard.set(try? PropertyListEncoder().encode(recordsCache), forKey: "myNumber")
         }
     }
 }
 
-extension RecorderViewModel: AVAudioRecorderDelegate {
+extension RecorderViewModel {
     private func startRecord() {
         let fileName = getDirectory().appendingPathComponent("NewRecord_\(records.count).m4a")
-        let settings = [AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
-                        AVSampleRateKey: 1200,
+        let settings = [AVFormatIDKey: kAudioFormatAppleLossless,
+                        AVSampleRateKey: 44100,
                         AVNumberOfChannelsKey: 1,
-                        AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue]
+                        AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue] as [String : Any]
         
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playAndRecord, options: AVAudioSession.CategoryOptions.mixWithOthers)
             try AVAudioSession.sharedInstance().setActive(true)
             audioRecorder = try AVAudioRecorder(url: fileName, settings: settings)
-            audioRecorder.delegate = self
-            audioRecorder.record()
+            audioRecorder?.record()
             print("record")
         } catch {
             print("Failed recording")
@@ -76,7 +72,7 @@ extension RecorderViewModel: AVAudioRecorderDelegate {
     }
     
     private func stopRecord() {
-        audioRecorder.stop()
+        audioRecorder?.stop()
         print("stop")
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback, options: AVAudioSession.CategoryOptions.mixWithOthers)
