@@ -5,7 +5,6 @@
 //  Created by Roman Zhukov on 13.03.2022.
 //
 
-import Foundation
 import AVFoundation
 
 class RecorderViewModel: ObservableObject {
@@ -34,7 +33,6 @@ class RecorderViewModel: ObservableObject {
             stopRecord()
             isRecord.toggle()
             let path = getDirectory().appendingPathComponent("NewRecord_\(records.count).m4a")
-            print(path)
             do {
                 let audio = try AVAudioPlayer(contentsOf: path)
                 records.insert(RecordCellViewModel(record: Record(name: "NewRecord_\(records.count)",

@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct RecordCellView: View {
-//    @Binding var sliderValue: Double
-//    @State private var likeIsHidden = true
+
     @ObservedObject var viewModel: RecordCellViewModel
     
     var body: some View {
@@ -26,7 +25,7 @@ struct RecordCellView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
             Slider(value: .constant(5), in: 0...10)
             HStack {
-                Text("00:02")
+                Text("\(viewModel.currentTime)")
                 Spacer()
                 Text("-00:13")
             }
@@ -34,13 +33,13 @@ struct RecordCellView: View {
                 Button(action: { viewModel.likePressed() }) {
                     Image("Heart")
                 }
-                Button(action: {}) {
+                Button(action: { viewModel.rewindButtonAction() }) {
                     Image("RewindButton")
                 }
                 Button(action: { viewModel.playRecord() }) {
                     Image("PlayButton")
                 }
-                Button(action: {}) {
+                Button(action: { viewModel.jumpButtonAction() }) {
                     Image("JumpButton")
                 }
                 Button(action: {}) {
