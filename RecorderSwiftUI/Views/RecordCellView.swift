@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct RecordCellView: View {
-
+    @State private var currentTime = 0.0
+    @State private var leftTime = 0.0
     @ObservedObject var viewModel: RecordCellViewModel
+    
+    private let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
     
     var body: some View {
         VStack {
@@ -23,11 +26,14 @@ struct RecordCellView: View {
             }
             Text("\(viewModel.record.date)")
                 .frame(maxWidth: .infinity, alignment: .leading)
-            Slider(value: .constant(5), in: 0...10)
+            Slider(value: $currentTime, in: 0.0...(viewModel.audioPlayer?.duration ?? 0.0))
+                .onChange(of: currentTime) { newValue in
+                    viewModel.audioPlayer?.currentTime = newValue
+                }
             HStack {
-                Text("\(viewModel.currentTime)")
+                Text("\(currentTime)")
                 Spacer()
-                Text("-00:13")
+                Text("\(leftTime)")
             }
             HStack(spacing: 40) {
                 Button(action: { viewModel.likePressed() }) {
@@ -37,7 +43,7 @@ struct RecordCellView: View {
                     Image("RewindButton")
                 }
                 Button(action: { viewModel.playRecord() }) {
-                    Image("PlayButton")
+                    viewModel.isPlaying ? Image(systemName: "pause.fill") : Image("PlayButton")
                 }
                 Button(action: { viewModel.jumpButtonAction() }) {
                     Image("JumpButton")
@@ -46,6 +52,9 @@ struct RecordCellView: View {
                     Image("PlusButton")
                 }
             }
+        }.onReceive(timer) { _ in
+            currentTime = viewModel.audioPlayer?.currentTime ?? 0.0
+            leftTime = currentTime - (viewModel.audioPlayer?.duration ?? 0.0)
         }
     }
 }

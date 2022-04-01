@@ -9,13 +9,12 @@ import AVFoundation
 
 class RecordCellViewModel: NSObject, ObservableObject {
     @Published var record: Record
-    @Published var currentTime = 0
-    
-    private var audioPlayer: AVAudioPlayer?
-    private var isPlaying = false
+    @Published var audioPlayer: AVAudioPlayer?
+    @Published var isPlaying = false
     
     init(record: Record) {
         self.record = record
+        
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: record.path)
         } catch {
@@ -25,8 +24,8 @@ class RecordCellViewModel: NSObject, ObservableObject {
     
     func playRecord() {
         if !isPlaying {
+            audioPlayer?.prepareToPlay()
             audioPlayer?.play()
-            updateCurrentTime()
             isPlaying.toggle()
             print("play")
         } else {
@@ -46,15 +45,5 @@ class RecordCellViewModel: NSObject, ObservableObject {
     
     func rewindButtonAction() {
         audioPlayer?.currentTime -= 3
-    }
-    
-    private func updateCurrentTime() {
-        currentTime = Int(audioPlayer?.currentTime ?? 0)
-    }
-    
-    func updateLeftTime() {
-        let currentTime = Int(audioPlayer?.currentTime ?? 0)
-        let duration = Int(audioPlayer?.duration ?? 0)
-        let leftTime = currentTime - duration
     }
 }
