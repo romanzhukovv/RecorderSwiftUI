@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC519CB527F865770000A771 /* ExtensionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC519CB427F865760000A771 /* ExtensionView.swift */; };
 		FC7E5E4227E09AAB00523754 /* RecordCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E5E4127E09AAB00523754 /* RecordCellViewModel.swift */; };
 		FC9E68C127DE8A2000489FCF /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9E68C027DE8A2000489FCF /* StorageManager.swift */; };
 		FC9E68C327DE8AB100489FCF /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9E68C227DE8AB100489FCF /* Record.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FC519CB427F865760000A771 /* ExtensionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionView.swift; sourceTree = "<group>"; };
 		FC79473727DF8475001C8171 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FC7E5E4127E09AAB00523754 /* RecordCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCellViewModel.swift; sourceTree = "<group>"; };
 		FC9E68C027DE8A2000489FCF /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
@@ -43,6 +45,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FC519CB627F868C00000A771 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FC519CB427F865760000A771 /* ExtensionView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		FC9E68BA27DE88EF00489FCF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +120,7 @@
 				FC9E68BD27DE894500489FCF /* Models */,
 				FC9E68BC27DE892900489FCF /* ViewModels */,
 				FC9E68BB27DE892000489FCF /* Views */,
+				FC519CB627F868C00000A771 /* Extensions */,
 				FC9E68BA27DE88EF00489FCF /* Resources */,
 				FCCA3A2227DBE329002A9B80 /* Preview Content */,
 			);
@@ -200,6 +211,7 @@
 				FC9E68C527DE8AC600489FCF /* RecorderViewModel.swift in Sources */,
 				FC9E68C327DE8AB100489FCF /* Record.swift in Sources */,
 				FCCA3A1D27DBE328002A9B80 /* RecorderSwiftUIApp.swift in Sources */,
+				FC519CB527F865770000A771 /* ExtensionView.swift in Sources */,
 				FC9E68C727DE906C00489FCF /* RecordCellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -18,7 +18,7 @@ class RecordCellViewModel: NSObject, ObservableObject {
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: record.path)
         } catch {
-            print(error.localizedDescription)
+            print(error)
         }
     }
     
