@@ -11,7 +11,7 @@ class RecorderViewModel: ObservableObject {
     @Published var records: [RecordCellViewModel] = []
     @Published var isRecord = false
     private var audioRecorder: AVAudioRecorder?
-    
+
     init() {
         requestRecordPermission()
         
@@ -32,16 +32,13 @@ class RecorderViewModel: ObservableObject {
         } else {
             stopRecord()
             isRecord.toggle()
+            
             let path = getDirectory().appendingPathComponent("NewRecord_\(records.count).m4a")
-            do {
-                let audio = try AVAudioPlayer(contentsOf: path)
-                records.insert(RecordCellViewModel(record: Record(name: "NewRecord_\(records.count)",
-                                                                  date: Date().formatted(date: .abbreviated, time: .shortened),
-                                                                  duration: audio.duration,
-                                                                  path: path)), at: 0)
-            } catch {
-                print("Error")
-            }
+            
+            records.insert(RecordCellViewModel(record: Record(name: "NewRecord_\(records.count)",
+                                                              date: Date().formatted(date: .abbreviated, time: .omitted),
+                                                              path: path)), at: 0)
+          
             
             let recordsCache = Array(records.map { $0.record }.reversed())
             

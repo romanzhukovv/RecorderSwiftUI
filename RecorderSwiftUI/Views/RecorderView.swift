@@ -9,7 +9,8 @@ import SwiftUI
 
 struct RecorderView: View {
     @StateObject private var viewModel = RecorderViewModel()
-
+    @State private var cellID = UUID()
+    
     init() {
         setupNavigationBar()
     }
@@ -19,10 +20,13 @@ struct RecorderView: View {
             VStack {
                 ScrollView {
                     ForEach(viewModel.records, id: \.self) { record in
-                        RecordCellView(viewModel: record)
+                        RecordCellView(viewModel: record , cellID: $cellID)
                             .buttonStyle(PlainButtonStyle())
-                        Divider().background(Color.sh_basicGrey)
-                            .padding(EdgeInsets(top: 22, leading: 18, bottom: 0, trailing: 0))
+                            .onTapGesture {
+                                withAnimation {
+                                    cellID = record.record.id
+                                }
+                            }
                     }
                     .navigationTitle("Диктофон")
 //                .listStyle(.plain)
