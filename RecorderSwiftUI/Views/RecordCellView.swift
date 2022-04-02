@@ -18,7 +18,9 @@ struct RecordCellView: View {
     var body: some View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
-                Text("\(viewModel.record.name)")
+                TextField(viewModel.record.name, text: $viewModel.record.name, onCommit: {
+                    <#code#>
+                })
                     .font(fontBold16)
                     .foregroundColor(Color.sh_basicGrey)
                 Spacer()

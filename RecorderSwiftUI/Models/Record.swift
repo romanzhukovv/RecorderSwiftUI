@@ -9,7 +9,7 @@ import Foundation
 
 struct Record: Hashable, Codable {
     var id = UUID()
-    let name: String
+    var name: String
     let date: String
     var isLike = false
     let path: URL

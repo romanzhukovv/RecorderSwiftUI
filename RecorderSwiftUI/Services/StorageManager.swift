@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+class StorageManager {
+    static let shared = StorageManager()
+    
+    private init() {}
+    
+    func saveData() {
+        
+    }
+}

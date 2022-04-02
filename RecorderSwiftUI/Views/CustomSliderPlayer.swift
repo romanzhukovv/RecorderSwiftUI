@@ -51,7 +51,7 @@ struct CustomSliderPlayer: View {
 
                 RoundedRectangle(cornerRadius: 5)
                     .frame(width: width, height: lineWidth)
-                    .foregroundColor(.sh_basicGrey)
+                    .foregroundColor(.sh_Grey)
                 RoundedRectangle(cornerRadius: 5)
                     .frame(width: (controlSecond.width) - (controlFirst.width) , height: lineWidth)
                     .offset(x: ((controlFirst.width) + (controlSecond.width))/2, y: 0)
