@@ -21,6 +21,13 @@ struct RecorderView: View {
                 ScrollView {
                     ForEach(viewModel.records, id: \.self) { record in
                         RecordCellView(viewModel: record , cellID: $cellID)
+                            .swipeActions(edge: .trailing) {
+                                            Button(role: .destructive) {
+                                                print("delete")
+                                            } label: {
+                                                Label("Delete", systemImage: "trash")
+                                            }
+                                        }
                             .background(Color.white)  // Для того, чтобы можно было тапнуть по любому месту в ячейке
                             .buttonStyle(PlainButtonStyle())
                             .onTapGesture {
@@ -29,6 +36,9 @@ struct RecorderView: View {
                                 }
                             }
                     }
+//                    .onDelete(perform: { indexSet in
+//                        viewModel.records.remove(atOffsets: indexSet)
+//                    })
                     .navigationTitle("Диктофон")
 //                .listStyle(.plain)
                 }
