@@ -21,6 +21,7 @@ struct RecorderView: View {
                 ScrollView {
                     ForEach(viewModel.records, id: \.self) { record in
                         RecordCellView(viewModel: record , cellID: $cellID)
+                            .background(Color.white)  // Для того, чтобы можно было тапнуть по любому месту в ячейке
                             .buttonStyle(PlainButtonStyle())
                             .onTapGesture {
                                 withAnimation {
