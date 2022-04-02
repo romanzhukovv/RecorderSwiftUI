@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FC519CB527F865770000A771 /* ExtensionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC519CB427F865760000A771 /* ExtensionView.swift */; };
+		FC519CB827F8728E0000A771 /* CustomSliderPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC519CB727F8728E0000A771 /* CustomSliderPlayer.swift */; };
 		FC7E5E4227E09AAB00523754 /* RecordCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E5E4127E09AAB00523754 /* RecordCellViewModel.swift */; };
 		FC9E68C127DE8A2000489FCF /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9E68C027DE8A2000489FCF /* StorageManager.swift */; };
 		FC9E68C327DE8AB100489FCF /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9E68C227DE8AB100489FCF /* Record.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		FC519CB427F865760000A771 /* ExtensionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionView.swift; sourceTree = "<group>"; };
+		FC519CB727F8728E0000A771 /* CustomSliderPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSliderPlayer.swift; sourceTree = "<group>"; };
 		FC79473727DF8475001C8171 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FC7E5E4127E09AAB00523754 /* RecordCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCellViewModel.swift; sourceTree = "<group>"; };
 		FC9E68C027DE8A2000489FCF /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 			children = (
 				FCCA3A1E27DBE328002A9B80 /* RecorderView.swift */,
 				FC9E68C627DE906C00489FCF /* RecordCellView.swift */,
+				FC519CB727F8728E0000A771 /* CustomSliderPlayer.swift */,
 				FCCA3A1C27DBE328002A9B80 /* RecorderSwiftUIApp.swift */,
 			);
 			path = Views;
@@ -205,6 +208,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC519CB827F8728E0000A771 /* CustomSliderPlayer.swift in Sources */,
 				FC9E68C127DE8A2000489FCF /* StorageManager.swift in Sources */,
 				FCCA3A1F27DBE328002A9B80 /* RecorderView.swift in Sources */,
 				FC7E5E4227E09AAB00523754 /* RecordCellViewModel.swift in Sources */,

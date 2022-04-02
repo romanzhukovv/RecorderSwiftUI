@@ -17,12 +17,17 @@ struct RecorderView: View {
     var body: some View {
         NavigationView {
             VStack {
-                List(viewModel.records, id: \.self) { record in
-                    RecordCellView(viewModel: record)
-                        .buttonStyle(PlainButtonStyle())
+                ScrollView {
+                    ForEach(viewModel.records, id: \.self) { record in
+                        RecordCellView(viewModel: record)
+                            .buttonStyle(PlainButtonStyle())
+                        Divider().background(Color.sh_basicGrey)
+                            .padding(EdgeInsets(top: 22, leading: 18, bottom: 0, trailing: 0))
+                    }
+                    .navigationTitle("Диктофон")
+//                .listStyle(.plain)
                 }
-                .navigationTitle("Диктофон")
-                .listStyle(.plain)
+                Spacer()
                 Button {
                     withAnimation(.default) {
                         viewModel.recordButtonAction()
@@ -31,6 +36,7 @@ struct RecorderView: View {
                     Text(viewModel.isRecord ? "Стоп" : "Запись")
                 }
             }
+            .padding(.top, 13)
         }
         .navigationViewStyle(.stack)
     }
@@ -41,7 +47,7 @@ extension RecorderView {
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
         navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        navBarAppearance.backgroundColor = UIColor(displayP3Red: 229/255, green: 57/255, blue: 53/255, alpha: 1)
+        navBarAppearance.backgroundColor = UIColor(Color.sh_basicRed)
         UINavigationBar.appearance().standardAppearance = navBarAppearance
         UINavigationBar.appearance().compactAppearance = navBarAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
@@ -50,8 +56,8 @@ extension RecorderView {
 }
 
     
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        RecorderView()
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RecorderView()
+//    }
+//}

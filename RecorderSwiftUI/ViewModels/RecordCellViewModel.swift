@@ -11,6 +11,8 @@ class RecordCellViewModel: NSObject, ObservableObject {
     @Published var record: Record
     @Published var audioPlayer: AVAudioPlayer?
     @Published var isPlaying = false
+    @Published var sliderValue: Float = 0
+    
     
     init(record: Record) {
         self.record = record
@@ -23,6 +25,7 @@ class RecordCellViewModel: NSObject, ObservableObject {
     }
     
     func playRecord() {
+//        sliderValue = Float(audioPlayer?.currentTime ?? 0) / Float(audioPlayer?.duration ?? 0)
         if !isPlaying {
             audioPlayer?.prepareToPlay()
             audioPlayer?.play()
