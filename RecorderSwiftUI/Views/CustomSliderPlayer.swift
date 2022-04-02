@@ -58,7 +58,7 @@ struct CustomSliderPlayer: View {
                     .foregroundColor(.customRed)
                
                 Circle()
-                    .foregroundColor(.sh_darkGrey)
+                    .foregroundColor(.sh_basicGrey)
                     .frame(width: circleWidth)
                     .offset(x: controlSecond.width, y: 0)
                     .gesture(dragGestureSecond)
