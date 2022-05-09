@@ -66,6 +66,7 @@ extension RecorderViewModel {
         }
     }
     
+    
     private func stopRecord() {
         audioRecorder?.stop()
         print("stop")
